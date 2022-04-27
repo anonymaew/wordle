@@ -1,0 +1,25 @@
+{
+  "name": "games",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.1.5",
+    "next-pwa": "^5.5.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25",
+    "@types/react": "18.0.6",
+    "eslint": "8.14.0",
+    "eslint-config-next": "12.1.5",
+    "sass": "^1.50.1",
+    "typescript": "4.6.3"
+  }
+}
