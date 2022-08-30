@@ -1,10 +1,10 @@
-import Head from "next/head";
-import style from "./wordle.module.scss";
-import { WordleClassic } from "../component/WordleMode";
+import Head from 'next/head';
+
+import { WordleClassic } from '../component/WordleMode';
 
 const MainPage = () => {
   return (
-    <div className={style.page}>
+    <div className="h-screen flex items-center justify-center bg-zinc-900 text-white text-center">
       <Head>
         <title>Wordle Plus</title>
         <link rel="icon" href="/favicon.ico" />

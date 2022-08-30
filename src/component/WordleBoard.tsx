@@ -1,6 +1,6 @@
-import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
-import style from "../pages/wordle.module.scss";
-import data from "../public/words.json";
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+
+import data from '../public/words.json';
 
 interface WordleBoardProps {
   length: number;
@@ -109,8 +109,8 @@ const WordleBoard = forwardRef((props: WordleBoardProps, ref) => {
   };
 
   return (
-    <div className={style.wordleBoard}>
-      <table>
+    <div className="inline-block m-4 overflow-auto p-0">
+      <table className="mx-auto border-collapse">
         <tbody>
           {words.map((word: string, rindex: number) => {
             return (
@@ -121,17 +121,17 @@ const WordleBoard = forwardRef((props: WordleBoardProps, ref) => {
                   .map((letter, index) => {
                     return (
                       <td
-                        style={{
-                          backgroundColor: !wordsColor[rindex]
-                            ? "#222"
+                        className={`w-16 h-16 border-4 border-zinc-500 text-5xl ${
+                          !wordsColor[rindex][index]
+                            ? "bg-zinc-900"
                             : wordsColor[rindex][index] == "G"
-                            ? "#538d4e"
+                            ? "bg-green-600"
                             : wordsColor[rindex][index] == "Y"
-                            ? "#b59f3b"
+                            ? "bg-yellow-500"
                             : wordsColor[rindex][index] == "B"
-                            ? "#444"
-                            : "#222",
-                        }}
+                            ? "bg-zinc-700"
+                            : "bg-zinc-900"
+                        }`}
                         key={rindex * 10 + index}
                       >
                         {letter}

@@ -1,8 +1,8 @@
-import { useState, useEffect, RefObject, createRef } from "react";
-import style from "../pages/wordle.module.scss";
-import WordleBoard, { WordleBoardInterface } from "./WordleBoard";
-import Keyboard from "./Keyboard";
-import data from "../public/words.json";
+import { createRef, RefObject, useEffect, useState } from 'react';
+
+import data from '../public/words.json';
+import Keyboard from './Keyboard';
+import WordleBoard, { WordleBoardInterface } from './WordleBoard';
 
 interface WordleProps {
   length: number;
@@ -80,7 +80,7 @@ const Wordle = (props: WordleProps) => {
 
   return (
     <div
-      className={style.wordlePage}
+      className="w-100 h-100 inline-block text-white"
       onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
         e.preventDefault();
         keyHandler(e.key);
@@ -98,7 +98,6 @@ const Wordle = (props: WordleProps) => {
           />
         );
       })}
-      <p>{}</p>
       <Keyboard keyHandler={keyHandler} />
     </div>
   );
@@ -107,7 +106,7 @@ const Wordle = (props: WordleProps) => {
 const SearchButton = (props: any) => {
   return (
     <a
-      className={style.hyperlink}
+      className="underline"
       href={"https://www.merriam-webster.com/dictionary/" + props.word}
       target="_blank"
       rel="noopener noreferrer"
