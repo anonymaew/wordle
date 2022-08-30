@@ -21,6 +21,7 @@ const WordleBoard = forwardRef((props: WordleBoardProps, ref) => {
   const [wordsColor, setWordsColor] = useState(
     Array(props.guess).fill("-".repeat(props.length))
   );
+  const [status, setStatus] = useState<String[]>(["", ""]);
   const [freeze, setFreeze] = useState(false);
 
   useEffect(() => {
@@ -75,22 +76,22 @@ const WordleBoard = forwardRef((props: WordleBoardProps, ref) => {
     enter: () => {
       if (freeze) return;
       if (words[wordsLevel].length < props.length) {
-        //setStatus("❌ Not enough letters!");
+        setStatus(["❌ Not enough letters!", ""]);
       } else {
         if (checkWord(words[wordsLevel].toLowerCase())) {
           setWordsLevel((i) => i + 1);
           if (words[wordsLevel].toLowerCase() == props.answer) {
             setFreeze(true);
-            //setStatus("🎉 Yes! The word is ");
+            setStatus(["🎉 Yes! The word is ", props.answer]);
             return;
           }
           if (wordsLevel == props.guess - 1) {
             setFreeze(true);
-            //setStatus("😩 The answer is ");
+            setStatus(["😩 The answer is ", props.answer]);
             return;
           }
         } else {
-          //setStatus("🤔 There is no such word " + words[wordsLevel]);
+          setStatus(["🤔 There is no such word ", words[wordsLevel]]);
         }
       }
     },
@@ -142,6 +143,12 @@ const WordleBoard = forwardRef((props: WordleBoardProps, ref) => {
           })}
         </tbody>
       </table>
+      <p>
+        {status[0]}
+        <a href={`https://www.britannica.com/dictionary/${status[1]}`}>
+          {status[1].toUpperCase()}
+        </a>
+      </p>
     </div>
   );
 });
